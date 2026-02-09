@@ -48,9 +48,13 @@ npx cypress open
 The original test implementation contained several reliability and design issues that made it unstable and difficult to maintain, like:
 
 Use of hard-coded waits (cy.wait(3000))
+
 Index-based selectors (cy.get('input').eq(8))
+
 No synchronization with backend network calls
+
 Weak or superficial assertions (e.g., .should('not.be.empty'))
+
 Direct navigation to the cart page without verifying Add to Cart API completion
 
 These patterns made the tests timing-dependent and tightly coupled to the DOM structure rather than actual application behavior.
@@ -77,10 +81,15 @@ So I designed the test to capture the initial unit price, update the quantity, a
 
 Test Definition
 This test verifies that when a user updates the product quantity:
+
 The initial unit price is captured correctly.
+
 The quantity field updates successfully.
+
 The total price recalculates based on the updated quantity.
+
 The recalculated price matches the expected mathematical logic (with appropriate tolerance).
+
 The updated price remains consistent after backend processing.
 
 This test validates pricing integrity, calculation accuracy, UI synchronization, and backend consistency. It ensures that quantity changes correctly impact total pricing and protects against revenue-impacting defects.
@@ -92,11 +101,17 @@ My goal was to validate not just the UI behavior, but also the business rule enf
 
 Test Definition
 This test verifies that when a user enters a quantity greater than available inventory:
+
 The system displays a “Requested Quantity More than Available” modal.
+
 The modal shows the correct available quantity.
+
 Clicking “Yes” adds only the available quantity to the cart.
+
 The cart reflects the correct adjusted quantity.
+
 Backend response returns a successful status code.
+
 This test validates inventory enforcement, modal handling, backend synchronization, and cart state persistence. It ensures that the system correctly prevents overselling while maintaining a consistent and predictable user experience.
 
 ## Framework design decisions
