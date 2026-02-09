@@ -108,6 +108,9 @@ To keep tests independent, I added cleanup by clearing the cart after each test.
 
 ## Assumptions
 The test environment is stable and representative of production behavior.
+
 Authentication is required to view price and ship-date information.
+
 Product inventory and pricing may change dynamically, so numeric comparisons allow small tolerances.
+
 The cart starts in a clean state before each test (handled using clearCart()).
