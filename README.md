@@ -114,3 +114,18 @@ Authentication is required to view price and ship-date information.
 Product inventory and pricing may change dynamically, so numeric comparisons allow small tolerances.
 
 The cart starts in a clean state before each test (handled using clearCart()).
+
+## Future Improvements
+Introduce API contract validation using schema-based assertions to strengthen backend verification.
+
+Implement API mocking for deterministic test execution in lower environments.
+
+Standardize and enforce data-test attributes across the application to improve selector resilience.
+
+Refactor repeated workflows (e.g., quantity updates, cart operations) into reusable utility abstractions.
+
+Add parallel CI execution with structured reporting (e.g., Allure) for better observability.
+
+Enhance negative testing scenarios (edge cases around inventory, pricing thresholds, and error handling).
+
+Introduce visual validation or snapshot comparison for critical pricing and status components.
